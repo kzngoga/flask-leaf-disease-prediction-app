@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="form-section">
+  <div class="form-content">
+    <div class="row">
+        <div class="col-7">
+            <div class="result-img-div">
+                <img src="{{url_for('static',filename=user_image )}}" alt="placeholder">
+                <div class="text-center">
+                    <a class="btn btn-success mt-5 px-4" href="/predict"><i class="fas fa-arrow-alt-circle-left me-2"></i> Go Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="text-content">
+                <h1>
+                    Prediction Results
+                </h1>
+                <p>After scanning and analyzing the uploaded leaf, here are the results.</p>
+                <div class="results-content">
+                    <p>
+                        <span class="results-icon"><i class="fas fa-leaf"></i></span>
+                        <span class="results-title ms-2">Leaf</span>
+                        <span class="results-text d-block">{{leafs[pred_id].leaf}}</span>
+                    </p>
+                    <p>
+                        <span class="results-icon"><i class="fas fa-info-circle"></i></span>
+                        <span class="results-title ms-2">Results</span>
+                        <span class="results-text d-block ">{{leafs[pred_id].result}}</span>
+                    </p>
+                    <p>
+                        <span class="results-icon"><i class="far fa-comment"></i></span>
+                        <span class="results-title ms-2">Comments</span>
+                        <span class="results-text d-block ">{{leafs[pred_id].comment}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

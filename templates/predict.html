@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="form-section">
+  <div class="form-content">
+    <div class="row">
+        <div class="col-7">
+            <div class="form-img"></div>
+        </div>
+        <div class="col-5">
+            <div class="text-content">
+                <h1>
+                    Predict Leaf Disease
+                </h1>
+                <p>Choose a leaf image to predict if it has a disease or not.</p>
+                <form action="results" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input id="chooser" name="image" type="file" class="form-control form-chooser" hidden onchange="showPreview(event);" />
+                        <label
+                        for="chooser"
+                        class="file-label"
+                      >
+                        <span class="img-icon"><i class="fas fa-images"></i></span>
+                      </label>
+                    </div>
+                    <p id="filename" class="file-name mt-3 text-center">
+                      <span class="img-txt">Image:</span> <span id="fname" class="ms-2">-</span></p>
+                    <div class="form-group text-center">
+                        <button class="btn btn-success mt-4 px-4" type="submit">Predict <i class="fas fa-arrow-alt-circle-right ms-2"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+function showPreview(event) {
+  if(event.target.files.length > 0) {
+    var src = URL.createObjectURL(event.target.files[0]);
+    var fname = event.target.files[0].name;
+    var preview = document.getElementById("fname");
+    preview.innerHTML = fname;
+  }
+  else {
+    preview.innerHTML = '-';
+  }
+}
+</script>
+{% endblock %}
